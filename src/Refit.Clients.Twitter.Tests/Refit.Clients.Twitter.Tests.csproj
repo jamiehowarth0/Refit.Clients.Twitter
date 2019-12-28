@@ -10,7 +10,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\Library\Library.csproj" />
+    <ProjectReference Include="..\Refit.Clients.Twitter\Refit.Clients.Twitter.csproj" />
   </ItemGroup>
 
   <ItemGroup>

@@ -1,8 +1,8 @@
-﻿// Copyright (c) COMPANY-PLACEHOLDER. All rights reserved.
+// Copyright (c) Benjamin Howarth, various contributors. All rights reserved.
 // Licensed under the MIT license. See LICENSE file in the project root for full license information.
 
 using System;
-using Library;
+using Refit.Clients.Twitter;
 using Xunit;
 using Xunit.Abstractions;
 
