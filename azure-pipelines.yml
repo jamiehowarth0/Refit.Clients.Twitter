@@ -10,14 +10,20 @@ trigger:
     - .vscode/
 
 variables:
-  TreatWarningsAsErrors: false
-  DOTNET_SKIP_FIRST_TIME_EXPERIENCE: true
-  BuildConfiguration: Release
-  BuildPlatform: Any CPU
-  codecov_token: 7390a827-c2f8-4346-a58a-44c93bc0bc1f
+- group: 'Refit keys'
+- name: TreatWarningsAsErrors
+  value: false
+- name: DOTNET_SKIP_FIRST_TIME_EXPERIENCE
+  value: true
+- name: BuildConfiguration
+  value: Release
+- name: BuildPlatform
+  value: 'Any CPU'
+- name: codecov_token
+  value: '7390a827-c2f8-4346-a58a-44c93bc0bc1f'
   #ci_feed: # find guid used by Azure DevOps Artifacts for the feed. Learn more at https://github.com/AArnott/Library.Template/issues/28
-  NUGET_PACKAGES: $(Agent.TempDirectory)/.nuget/packages
-  group: 'Refit keys'
+- name: NUGET_PACKAGES
+  value: '$(Agent.TempDirectory)/.nuget/packages'
 
 jobs:
 - template: azure-pipelines/build.yml
