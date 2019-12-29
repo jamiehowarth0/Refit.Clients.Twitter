@@ -345,3 +345,5 @@ MigrationBackup/
 
 # dotnet tool local install directory
 .store/
+
+LocalSecretConfiguration.cs
