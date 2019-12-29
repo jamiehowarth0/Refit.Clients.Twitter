@@ -4,7 +4,6 @@
     using System.Threading.Tasks;
     using Refit;
     using Refit.Clients.Twitter.Models;
-    using Refit.Clients.Twitter.Models.Entities;
     using Refit.Clients.Twitter.Models.QueryParams;
 
     [Headers("Authorization: OAuth")]
@@ -29,7 +28,7 @@
         Task<UserList> ShowList([Query]ListIDOrSlugQueryParams queryParams);
 
         [Get("/lists/statuses.json")]
-        Task<IEnumerable<Tweet>> GetStatuses();
+        Task<IEnumerable<Tweet>> GetStatuses([Query]ListStatusQueryParams queryParams);
 
         [Get("/lists/subscribers.json")]
         Task<ListMembers> GetSubscribers();
@@ -66,5 +65,9 @@
 
         [Post("/lists/update.json")]
         Task<UserList> UpdateList([Query]UserList list);
+    }
+
+    public class ListStatusQueryParams
+    {
     }
 }

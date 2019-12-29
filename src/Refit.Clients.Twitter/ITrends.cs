@@ -1,11 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Security.Cryptography.X509Certificates;
-using System.Text;
-using Refit;
-
-namespace Refit.Clients.Twitter
+﻿namespace Refit.Clients.Twitter
 {
+    using System.Collections.Generic;
+    using Refit.Clients.Twitter.Models.Entities;
+
     [Headers("Authorization: OAuth")]
     public interface ITrends
     {

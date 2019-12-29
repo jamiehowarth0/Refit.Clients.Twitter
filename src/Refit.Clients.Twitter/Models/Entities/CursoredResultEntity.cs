@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace Refit.Clients.Twitter.Models.Entities
+﻿namespace Refit.Clients.Twitter.Models.Entities
 {
     public abstract class CursoredResultEntity<T>
         where T : class

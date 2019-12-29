@@ -6,7 +6,7 @@
     <NoWarn>$(NoWarn);CS1591</NoWarn>
     <CopyLocalLockFileAssemblies>true</CopyLocalLockFileAssemblies>
     <CodeAnalysisRuleSet>..\tests.ruleset</CodeAnalysisRuleSet>
-    <RootNamespace />
+    <RootNamespace>Refit.Clients.Twitter.Tests</RootNamespace>
   </PropertyGroup>
 
   <ItemGroup>

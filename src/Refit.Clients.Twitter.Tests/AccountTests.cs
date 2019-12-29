@@ -61,7 +61,6 @@
             {
                 var savedBannerBytes = await client.GetByteArrayAsync(banners.Sizes._1500x500.Url);
                 var savedBannerBase64 = Convert.ToBase64String(savedBannerBytes);
-
                 Assert.DoesNotThrowAsync(async () => await this._account.UpdateProfileBanner(null, savedBannerBase64));
             }
         }

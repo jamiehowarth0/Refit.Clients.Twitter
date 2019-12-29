@@ -9,7 +9,6 @@
     using Newtonsoft.Json.Serialization;
     using Refit;
     using Refit.Clients.Twitter.Extensions;
-    using Refit.Clients.Twitter.Helpers;
 
     public class TwitterClient
     {
@@ -31,7 +30,7 @@
         {
             this.ConsumerKey = consumerKey;
             this.AccessToken = accessToken;
-            this.SigningKey = $"{UriExtensions.UrlEncode(consumerSecret)}&{UriExtensions.UrlEncode(accessTokenSecret)}";
+            this.SigningKey = $"{consumerSecret.UrlEncode()}&{accessTokenSecret.UrlEncode()}";
             this._settings = new RefitSettings()
             {
                 HttpMessageHandlerFactory = () => new OAuthHttpClientHandler(this.GetToken, null),

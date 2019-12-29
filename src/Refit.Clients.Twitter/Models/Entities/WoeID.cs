@@ -1,6 +1,4 @@
-﻿using Refit.Clients.Twitter.Models.Entities;
-
-namespace Refit.Clients.Twitter
+﻿namespace Refit.Clients.Twitter.Models.Entities
 {
     public class WoeID
     {

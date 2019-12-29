@@ -11,11 +11,11 @@
 
     public class CompressedJsonContentSerializer : IContentSerializer
     {
-        private Lazy<JsonSerializerSettings> jsonSerializerSettings;
+        private readonly Lazy<JsonSerializerSettings> _jsonSerializerSettings;
 
         public CompressedJsonContentSerializer(JsonSerializerSettings jsonSerializerSettings)
         {
-            this.jsonSerializerSettings = new Lazy<JsonSerializerSettings>(() =>
+            this._jsonSerializerSettings = new Lazy<JsonSerializerSettings>(() =>
             {
                 if (jsonSerializerSettings == null)
                 {
@@ -23,8 +23,10 @@
                     {
                         return new JsonSerializerSettings();
                     }
+
                     return JsonConvert.DefaultSettings();
                 }
+
                 return jsonSerializerSettings;
             });
         }
@@ -32,14 +34,14 @@
         /// <inheritdoc/>
         public async Task<HttpContent> SerializeAsync<T>(T item)
         {
-            var content = new StringContent(JsonConvert.SerializeObject(item, this.jsonSerializerSettings.Value), Encoding.UTF8, "application/json");
+            var content = new StringContent(JsonConvert.SerializeObject(item, this._jsonSerializerSettings.Value), Encoding.UTF8, "application/json");
             return await Task.FromResult((HttpContent)content);
         }
 
         /// <inheritdoc/>
         public async Task<T> DeserializeAsync<T>(HttpContent content)
         {
-            var serializer = JsonSerializer.Create(this.jsonSerializerSettings.Value);
+            var serializer = JsonSerializer.Create(this._jsonSerializerSettings.Value);
 
             using (var stream = await content.ReadAsStreamAsync())
             {

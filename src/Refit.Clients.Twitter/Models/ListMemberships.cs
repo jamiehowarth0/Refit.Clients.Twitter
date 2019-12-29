@@ -1,6 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
+﻿using System.Collections.Generic;
 using Refit.Clients.Twitter.Models.Entities;
 
 namespace Refit.Clients.Twitter.Models

@@ -1,4 +1,4 @@
-﻿namespace Refit.Clients.Twitter
+﻿namespace Refit.Clients.Twitter.Models.QueryParams
 {
     public class ProfileBannerQueryParams
     {

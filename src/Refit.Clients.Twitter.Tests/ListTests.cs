@@ -1,4 +1,6 @@
-﻿namespace Refit.Clients.Twitter.Tests
+﻿using System.Diagnostics.CodeAnalysis;
+
+namespace Refit.Clients.Twitter.Tests
 {
     using System;
     using System.Linq;
@@ -85,8 +87,9 @@
         [Test]
         public async Task Test_ListStatuses_Get()
         {
-            var statuses = await this._lists.GetStatuses();
-            Assert.IsNotEmpty(statuses);
+            // var statuses = await this._lists.GetStatuses();
+            // Assert.IsNotEmpty(statuses);
+            Assert.Fail();
         }
 
         [Test]

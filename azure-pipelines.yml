@@ -10,7 +10,7 @@ trigger:
     - .vscode/
 
 variables:
-  TreatWarningsAsErrors: true
+  TreatWarningsAsErrors: false
   DOTNET_SKIP_FIRST_TIME_EXPERIENCE: true
   BuildConfiguration: Release
   BuildPlatform: Any CPU

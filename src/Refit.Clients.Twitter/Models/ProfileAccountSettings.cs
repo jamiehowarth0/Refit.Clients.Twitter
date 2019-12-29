@@ -1,7 +1,6 @@
 ﻿namespace Refit.Clients.Twitter.Models
 {
     using System;
-    using System.Drawing;
 
     public class ProfileAccountSettings
     {

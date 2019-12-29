@@ -1,4 +1,4 @@
-﻿namespace Refit.Clients.Twitter.Helpers
+﻿namespace Refit.Clients.Twitter.Extensions
 {
     using System;
     using System.Collections.Generic;
@@ -86,9 +86,10 @@
 
         private static string GetSignature(string signingKey, string requestToBeSigned)
         {
-            using (var hmacsha1 = new HMACSHA1(Encoding.UTF8.GetBytes(signingKey))) {
+            using (var hmacsha1 = new HMACSHA1(Encoding.UTF8.GetBytes(signingKey)))
+            {
                 return Convert.ToBase64String(hmacsha1.ComputeHash(Encoding.UTF8.GetBytes(requestToBeSigned)));
-            };
+            }
         }
 
     }
