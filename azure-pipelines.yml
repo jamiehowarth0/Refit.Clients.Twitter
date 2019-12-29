@@ -14,9 +14,10 @@ variables:
   DOTNET_SKIP_FIRST_TIME_EXPERIENCE: true
   BuildConfiguration: Release
   BuildPlatform: Any CPU
-  #codecov_token: # Get a new one from https://codecov.io/
+  codecov_token: 7390a827-c2f8-4346-a58a-44c93bc0bc1f
   #ci_feed: # find guid used by Azure DevOps Artifacts for the feed. Learn more at https://github.com/AArnott/Library.Template/issues/28
   NUGET_PACKAGES: $(Agent.TempDirectory)/.nuget/packages
+  group: 'Refit keys'
 
 jobs:
 - template: azure-pipelines/build.yml

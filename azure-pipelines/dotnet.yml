@@ -1,11 +1,5 @@
 steps:
 
-- task: AzureKeyVault@1
-  inputs:
-    azureSubscription: 'Refit keys'
-    KeyVaultName: 'Refit-test-secrets'
-    SecretsFilter: '*'
-
 - script: dotnet build --no-restore -c $(BuildConfiguration) /v:m /bl:"$(Build.ArtifactStagingDirectory)/build_logs/build.binlog"
   displayName: dotnet build
   workingDirectory: src
