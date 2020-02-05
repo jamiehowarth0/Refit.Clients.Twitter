@@ -103,7 +103,7 @@
         [TearDown]
         public void Teardown()
         {
-            var settings = new ProfileAccountSettings {Name = "Benjamin Howarth" };
+            var settings = new ProfileAccountSettings { Name = "Benjamin Howarth" };
             _account.UpdateProfile(settings);
         }
     }

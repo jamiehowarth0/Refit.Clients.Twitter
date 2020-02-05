@@ -1,11 +1,10 @@
-﻿namespace Refit.Clients.Twitter.Tests
-{
-    using System;
-    using System.Threading.Tasks;
-    using NUnit.Framework;
-    using Refit.Clients.Twitter;
-    using Refit.Clients.Twitter.Models.QueryParams;
+﻿using System;
+using System.Threading.Tasks;
+using NUnit.Framework;
+using Refit.Clients.Twitter.Models.QueryParams;
 
+namespace Refit.Clients.Twitter.Tests
+{
     [TestFixture]
     public class StatusTests
     {

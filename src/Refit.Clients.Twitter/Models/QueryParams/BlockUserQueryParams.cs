@@ -12,7 +12,5 @@
             get => this._performBlock.HasValue ? this._performBlock.Value.ToString().ToLowerInvariant() : Boolean.TrueString.ToLowerInvariant();
             set => this._performBlock = bool.Parse(value);
         }
-
-
     }
 }

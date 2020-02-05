@@ -8,7 +8,7 @@
         private ulong? _userId;
 
         [AliasAs("screen_name")]
-        public string? ScreenName
+        public string ScreenName
         {
             get => !string.IsNullOrEmpty(this._screenName) ? this._screenName : string.Empty;
             set => this._screenName = value;

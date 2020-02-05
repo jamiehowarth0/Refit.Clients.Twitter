@@ -1,4 +1,7 @@
-﻿namespace Refit.Clients.Twitter
+﻿using System;
+using System.Runtime.CompilerServices;
+
+namespace Refit.Clients.Twitter
 {
     using System.Collections.Generic;
     using System.Threading.Tasks;
@@ -31,7 +34,7 @@
         Task<IEnumerable<Tweet>> GetStatuses([Query]ListStatusQueryParams queryParams);
 
         [Get("/lists/subscribers.json")]
-        Task<ListMembers> GetSubscribers();
+        Task<ListMembers> GetSubscribers([Query]ListIDOrSlugCursorQueryParams queryParams);
 
         [Get("/lists/subscribers/show.json")]
         Task<User> ShowSubscribers();
@@ -64,7 +67,7 @@
         Task DeleteListSubscriber();
 
         [Post("/lists/update.json")]
-        Task<UserList> UpdateList([Query]UserList list);
+        Task<UserList> UpdateList([Query]UpdateListQueryParams list);
     }
 
     public class ListStatusQueryParams
