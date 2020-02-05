@@ -2,12 +2,11 @@
 // Copyright (c) Benjamin Howarth &amp; contributors. All rights reserved.
 // Licensed under the MIT license. See LICENSE file in the project root for full license information.
 // </copyright>
+using System.Threading.Tasks;
+using Refit;
 
 namespace Refit.Clients.Twitter
 {
-	using System.Threading.Tasks;
-	using Refit;
-
 	[Headers("Authorization: OAuth")]
 	public interface ISavedSearches
 	{

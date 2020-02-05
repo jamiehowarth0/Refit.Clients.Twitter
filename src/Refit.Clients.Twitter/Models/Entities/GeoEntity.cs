@@ -3,11 +3,14 @@
 // Licensed under the MIT license. See LICENSE file in the project root for full license information.
 // </copyright>
 
+using System.Collections.Generic;
+
 namespace Refit.Clients.Twitter.Models.Entities
 {
 	public class GeoEntity
 	{
-		public float[] Coordinates { get; set; }
+		public IEnumerable<float> Coordinates { get; set; }
+
 		public string Type { get; set; }
 	}
 }

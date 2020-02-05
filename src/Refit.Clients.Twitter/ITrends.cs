@@ -2,12 +2,11 @@
 // Copyright (c) Benjamin Howarth &amp; contributors. All rights reserved.
 // Licensed under the MIT license. See LICENSE file in the project root for full license information.
 // </copyright>
+using System.Collections.Generic;
+using Refit.Clients.Twitter.Models.Entities;
 
 namespace Refit.Clients.Twitter
 {
-	using System.Collections.Generic;
-	using Refit.Clients.Twitter.Models.Entities;
-
 	[Headers("Authorization: OAuth")]
 	public interface ITrends
 	{

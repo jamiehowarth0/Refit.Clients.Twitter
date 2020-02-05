@@ -3,10 +3,12 @@
 // Licensed under the MIT license. See LICENSE file in the project root for full license information.
 // </copyright>
 
+using System.Collections.Generic;
+
 namespace Refit.Clients.Twitter.Models.Entities
 {
 	public class DescriptionEntity
 	{
-		public object[] Urls { get; set; }
+		public IEnumerable<object> Urls { get; set; }
 	}
 }

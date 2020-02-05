@@ -31,7 +31,7 @@ namespace Refit.Clients.Twitter.Models.QueryParams
 		public string InReplyToStatusID
 		{
 			get => _inReplyToStatusID.ToString();
-			set => _inReplyToStatusID = UInt64.Parse(value);
+			set => _inReplyToStatusID = uint.Parse(value);
 		}
 
 		[AliasAs("auto_populate_reply_metadata")]

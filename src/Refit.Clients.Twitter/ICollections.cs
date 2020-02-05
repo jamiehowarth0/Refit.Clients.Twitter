@@ -2,13 +2,12 @@
 // Copyright (c) Benjamin Howarth &amp; contributors. All rights reserved.
 // Licensed under the MIT license. See LICENSE file in the project root for full license information.
 // </copyright>
+using System.Threading.Tasks;
+using Refit;
+using Refit.Clients.Twitter.Models.QueryParams;
 
 namespace Refit.Clients.Twitter
 {
-	using System.Threading.Tasks;
-	using Refit;
-	using Refit.Clients.Twitter.Models.QueryParams;
-
 	[Headers("Authorization: OAuth")]
 	public interface ICollections
 	{
@@ -30,14 +29,14 @@ namespace Refit.Clients.Twitter
 		[Post("/collections/destroy.json")]
 		Task Destroy([Query] object queryParams);
 
-		//GET collections/list
-		//GET collections/show
-		//POST collections/create
-		//POST collections/destroy
-		//POST collections/update
-		//POST collections/entries/add
-		//POST collections/entries/curate
-		//POST collections/entries/move
-		//POST collections/entries/remove
+		// GET collections/list
+		// GET collections/show
+		// POST collections/create
+		// POST collections/destroy
+		// POST collections/update
+		// POST collections/entries/add
+		// POST collections/entries/curate
+		// POST collections/entries/move
+		// POST collections/entries/remove
 	}
 }
