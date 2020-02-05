@@ -1,6 +1,6 @@
 ﻿namespace Refit.Clients.Twitter.Models.QueryParams
 {
-    public class LookupQueryParams
-    {
-    }
+	public class LookupQueryParams
+	{
+	}
 }

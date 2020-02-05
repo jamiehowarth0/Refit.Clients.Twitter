@@ -6,7 +6,7 @@ using Refit.Clients.Twitter.Models.QueryParams;
 
 namespace Refit.Clients.Twitter.Tests
 {
-    [TestFixture]
+	[TestFixture]
 	public class TimelineTests
 	{
 		private TwitterClient _client;

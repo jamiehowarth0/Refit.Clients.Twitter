@@ -7,32 +7,32 @@ using NUnit.Framework;
 
 namespace Refit.Clients.Twitter.Tests
 {
-    [TestFixture]
-    public class DirectMessagesTests
-    {
-        [Test]
-        public async Task Test_DirectMessages_List()
-        {
-            Assert.Fail();
-        }
+	[TestFixture]
+	public class DirectMessagesTests
+	{
+		[Test]
+		public async Task Test_DirectMessages_List()
+		{
+			Assert.Fail();
+		}
 
-        [Test]
-        public async Task Test_DirectMessages_Create()
-        {
-            Assert.Fail();
-        }
+		[Test]
+		public async Task Test_DirectMessages_Create()
+		{
+			Assert.Fail();
+		}
 
-        [Test]
-        public async Task Test_DirectMessages_Show()
-        {
-            Assert.Fail();
-        }
+		[Test]
+		public async Task Test_DirectMessages_Show()
+		{
+			Assert.Fail();
+		}
 
-        [Test]
-        public async Task Test_DirectMessages_Delete()
-        {
-            Assert.Fail();
-        }
+		[Test]
+		public async Task Test_DirectMessages_Delete()
+		{
+			Assert.Fail();
+		}
 
-    }
+	}
 }

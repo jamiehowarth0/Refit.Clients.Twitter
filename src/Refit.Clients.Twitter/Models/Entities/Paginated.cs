@@ -2,7 +2,7 @@
 
 namespace Refit.Clients.Twitter.Models.Entities
 {
-    public class Paginated<T>
+	public class Paginated<T>
 		where T : class
 	{
 		public ulong NextCursor { get; set; }

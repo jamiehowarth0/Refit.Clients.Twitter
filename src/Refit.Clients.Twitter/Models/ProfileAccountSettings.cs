@@ -3,7 +3,7 @@ using System.Globalization;
 
 namespace Refit.Clients.Twitter.Models
 {
-    public class ProfileAccountSettings
+	public class ProfileAccountSettings
 	{
 		private Uri _url;
 		private bool? _includeEntities;
