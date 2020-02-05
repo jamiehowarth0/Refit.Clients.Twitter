@@ -9,34 +9,34 @@ namespace Refit.Clients.Twitter
 	public interface IFriendships
 	{
 		[Get("/friends/ids.json")]
-		public async Task GetByIds();
+		Task GetByIds();
 
 		[Get("/friends/list.json")]
-		public async Task List();
+		Task List();
 
 		[Get("/friendships/incoming.json")]
-		public async Task Incoming();
+		Task Incoming();
 
 		[Get("/friendships/outgoing.json")]
-		public async Task Outgoing();
+		Task Outgoing();
 
 		[Get("/friendships/lookup.json")]
-		public async Task Lookup();
+		Task Lookup();
 
 		[Get("/friendships/show.json")]
-		public async Task Show();
+		Task Show();
 
 		[Get("/friendships/no_retweets/ids.json")]
-		public async Task<IEnumerable<int>> NoRetweets();
+		Task<IEnumerable<int>> NoRetweets();
 
 		[Post("/friendships/create.json")]
-		public async Task Create();
+		Task Create();
 
 		[Post("/friendships/destroy.json")]
-		public async Task Destroy();
+		Task Destroy();
 
 		[Post("/friendships/update.json")]
-		public async Task Update();
+		Task Update();
 
 		//GET friendships/no_retweets/ids
 		//GET friendships/show

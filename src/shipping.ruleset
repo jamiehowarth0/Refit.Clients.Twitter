@@ -71,8 +71,15 @@
   <Rules AnalyzerId="Microsoft.CodeAnalysis.CSharp" RuleNamespace="Microsoft.CodeAnalysis.CSharp">
     <Rule Id="CS8618" Action="None" />
   </Rules>
+  <Rules AnalyzerId="Microsoft.CodeAnalysis.CSharp.Features" RuleNamespace="Microsoft.CodeAnalysis.CSharp.Features">
+    <Rule Id="IDE0008" Action="None" />
+    <Rule Id="IDE0008WithoutSuggestion" Action="None" />
+    <Rule Id="IDE0009" Action="None" />
+  </Rules>
   <Rules AnalyzerId="StyleCop.Analyzers" RuleNamespace="StyleCop.Analyzers">
+    <Rule Id="SA1101" Action="None" />
     <Rule Id="SA1130" Action="None" />
     <Rule Id="SA1309" Action="None" />
+    <Rule Id="SX1101" Action="Error" />
   </Rules>
 </RuleSet>

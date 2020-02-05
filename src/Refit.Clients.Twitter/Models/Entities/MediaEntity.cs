@@ -1,11 +1,12 @@
-﻿namespace Refit.Clients.Twitter.Models.Entities
-{
-	using System;
-	using Newtonsoft.Json;
+﻿using System;
+using Newtonsoft.Json;
 
+namespace Refit.Clients.Twitter.Models.Entities
+{
 	public class MediaEntity : EntityWithIndices
 	{
 		public ulong ID { get; set; }
+
 		[JsonProperty("id_str")]
 
 		public string IDString { get; set; }
@@ -27,5 +28,5 @@
 		public VideoEntity VideoInfo { get; set; }
 
 		public AdditionalMediaInfoEntity AdditionalMediaInfo { get; set; }
-    }
+	}
 }

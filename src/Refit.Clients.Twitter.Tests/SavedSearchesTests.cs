@@ -7,31 +7,31 @@ using NUnit.Framework;
 
 namespace Refit.Clients.Twitter.Tests
 {
-    [TestFixture]
-    public class SavedSearchesTests
-    {
-        [Test]
-        public async Task Test_SavedSearches_List()
-        {
-            Assert.Fail();
-        }
+	[TestFixture]
+	public class SavedSearchesTests
+	{
+		[Test]
+		public async Task Test_SavedSearches_List()
+		{
+			Assert.Fail();
+		}
 
-        [Test]
-        public async Task Test_SavedSearches_Show()
-        {
-            Assert.Fail();
-        }
+		[Test]
+		public async Task Test_SavedSearches_Show()
+		{
+			Assert.Fail();
+		}
 
-        [Test]
-        public async Task Test_SavedSearches_Create()
-        {
-            Assert.Fail();
-        }
+		[Test]
+		public async Task Test_SavedSearches_Create()
+		{
+			Assert.Fail();
+		}
 
-        [Test]
-        public async Task Test_SavedSearches_Delete()
-        {
-            Assert.Fail();
-        }
-    }
+		[Test]
+		public async Task Test_SavedSearches_Delete()
+		{
+			Assert.Fail();
+		}
+	}
 }

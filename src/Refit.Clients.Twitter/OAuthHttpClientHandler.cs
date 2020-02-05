@@ -1,38 +1,38 @@
-﻿namespace Refit.Clients.Twitter
+﻿using System;
+using System.Net.Http;
+using System.Net.Http.Headers;
+using System.Threading;
+using System.Threading.Tasks;
+
+namespace Refit.Clients.Twitter
 {
-    using System;
-    using System.Net.Http;
-    using System.Net.Http.Headers;
-    using System.Threading;
-    using System.Threading.Tasks;
+	internal class OAuthHttpClientHandler : DelegatingHandler
+	{
+		private readonly Func<HttpRequestMessage, Task<string>> getToken;
 
-    internal class OAuthHttpClientHandler : DelegatingHandler
-    {
-        private readonly Func<HttpRequestMessage, Task<string>> getToken;
+		public OAuthHttpClientHandler(Func<HttpRequestMessage, Task<string>> getToken, HttpMessageHandler innerHandler)
+			: base(innerHandler ?? new HttpClientHandler())
+		{
+			this.getToken = getToken ?? throw new ArgumentNullException(nameof(getToken));
+		}
 
-        public OAuthHttpClientHandler(Func<HttpRequestMessage, Task<string>> getToken, HttpMessageHandler innerHandler)
-            : base(innerHandler ?? new HttpClientHandler())
-        {
-            this.getToken = getToken ?? throw new ArgumentNullException(nameof(getToken));
-        }
+		/// <inheritdoc/>
+		protected override async Task<HttpResponseMessage> SendAsync(HttpRequestMessage request, CancellationToken cancellationToken)
+		{
+			request.Headers.Add("User-Agent", "Refit.Clients.Twitter");
 
-        /// <inheritdoc/>
-        protected override async Task<HttpResponseMessage> SendAsync(HttpRequestMessage request, CancellationToken cancellationToken)
-        {
-            request.Headers.Add("User-Agent", "Refit.Clients.Twitter");
+			// See if the request has an authorize header
+			var auth = request.Headers.Authorization;
+			if (auth != null)
+			{
+				var token = await getToken(request).ConfigureAwait(false);
+				var header = new AuthenticationHeaderValue(auth.Scheme, token);
+				request.Headers.Authorization = header;
 
-            // See if the request has an authorize header
-            var auth = request.Headers.Authorization;
-            if (auth != null)
-            {
-                var token = await this.getToken(request).ConfigureAwait(false);
-                var header = new AuthenticationHeaderValue(auth.Scheme, token);
-                request.Headers.Authorization = header;
-                // Logger.Log($"Refit: {token}", Logger.RefitLogLocation);
-            }
+				// Logger.Log($"Refit: {token}", Logger.RefitLogLocation);
+			}
 
-            return await base.SendAsync(request, cancellationToken).ConfigureAwait(false);
-        }
-    }
-
+			return await base.SendAsync(request, cancellationToken).ConfigureAwait(false);
+		}
+	}
 }

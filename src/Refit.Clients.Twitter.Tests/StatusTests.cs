@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Globalization;
 using System.Threading.Tasks;
 using NUnit.Framework;
 using Refit.Clients.Twitter.Models.QueryParams;
@@ -55,7 +56,7 @@ namespace Refit.Clients.Twitter.Tests
                 Assert.DoesNotThrowAsync(async () => { mediaId = await this._client.UploadService.Upload(fileBytes, "image/png"); });
             }
 
-            var newTweet = new TweetQueryParams() { Status = "Refit media test", MediaIDs = mediaId.ToString() };
+            var newTweet = new TweetQueryParams() { Status = "Refit media test", MediaIDs = mediaId.ToString(CultureInfo.DefaultThreadCurrentCulture) };
             Assert.DoesNotThrowAsync(async () => await this._statuses.Post(newTweet));
         }
     }
