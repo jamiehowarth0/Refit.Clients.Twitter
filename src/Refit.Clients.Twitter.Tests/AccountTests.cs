@@ -73,7 +73,7 @@ namespace Refit.Clients.Twitter.Tests
 			var banners = await this._account.ProfileBanner(new IDOrScreenNameQueryParams() { ScreenName = "benjaminhowarth" })
 				.ConfigureAwait(false);
 			var savedBannerBytes = await (new HttpClient()).GetByteArrayAsync(banners.Sizes._1500x500.Url)
-                .ConfigureAwait(false);
+				.ConfigureAwait(false);
 			var savedBanner = Convert.ToBase64String(savedBannerBytes);
 			Assert.DoesNotThrowAsync(async () => await this._account.RemoveProfileBanner());
 		}

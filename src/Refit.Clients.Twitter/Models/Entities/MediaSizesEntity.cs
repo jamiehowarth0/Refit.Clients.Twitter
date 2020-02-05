@@ -2,7 +2,7 @@
 
 namespace Refit.Clients.Twitter.Models.Entities
 {
-    public class MediaSizesEntity
+	public class MediaSizesEntity
 	{
 		[JsonProperty("w")]
 		public int Width { get; set; }

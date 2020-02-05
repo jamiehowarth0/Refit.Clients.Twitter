@@ -1,16 +1,16 @@
 ﻿namespace Refit.Clients.Twitter.Models.Entities
 {
-    using Newtonsoft.Json;
+	using Newtonsoft.Json;
 
-    public class UrlEntity : EntityWithIndices
-    {
-        public string ExpandedUrl { get; set; }
+	public class UrlEntity : EntityWithIndices
+	{
+		public string ExpandedUrl { get; set; }
 
-        public string Url { get; set; }
+		public string Url { get; set; }
 
-        public string DisplayUrl { get; set; }
+		public string DisplayUrl { get; set; }
 
-        [JsonProperty("unwound")]
-        public ExtendedUrlEntity ExtendedProperties { get; set; }
-    }
+		[JsonProperty("unwound")]
+		public ExtendedUrlEntity ExtendedProperties { get; set; }
+	}
 }

@@ -3,7 +3,7 @@ using Refit.Clients.Twitter.Models.Entities;
 
 namespace Refit.Clients.Twitter.Models
 {
-    public class UserMentions : EntityWithIndices
+	public class UserMentions : EntityWithIndices
 	{
 		public string Name { get; set; }
 
