@@ -9,7 +9,6 @@ using Refit;
 
 namespace Refit.Clients.Twitter
 {
-
 	[Headers("Authorization: OAuth")]
 	public interface IFriendships
 	{
@@ -43,11 +42,9 @@ namespace Refit.Clients.Twitter
 		[Post("/friendships/update.json")]
 		Task Update();
 
-		//GET friendships/no_retweets/ids
-		//GET friendships/show
-		
-		//GET followers/ids
-		//GET followers/list
-
+		// GET friendships/no_retweets/ids
+		// GET friendships/show
+		// GET followers/ids
+		// GET followers/list
 	}
 }
