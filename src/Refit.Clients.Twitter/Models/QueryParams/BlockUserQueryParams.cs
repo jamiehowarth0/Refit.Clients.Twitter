@@ -9,8 +9,8 @@
         [AliasAs("perform_block")]
         public string PerformBlock
         {
-            get => this._performBlock.HasValue ? this._performBlock.Value.ToString().ToLowerInvariant() : Boolean.TrueString.ToLowerInvariant();
-            set => this._performBlock = bool.Parse(value);
+            get => _performBlock.HasValue ? _performBlock.Value.ToString().ToLowerInvariant() : Boolean.TrueString.ToLowerInvariant();
+            set => _performBlock = bool.Parse(value);
         }
     }
 }

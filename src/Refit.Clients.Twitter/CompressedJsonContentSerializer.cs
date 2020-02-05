@@ -15,7 +15,7 @@
 
 		public CompressedJsonContentSerializer(JsonSerializerSettings jsonSerializerSettings)
 		{
-			this._jsonSerializerSettings = new Lazy<JsonSerializerSettings>(() =>
+			_jsonSerializerSettings = new Lazy<JsonSerializerSettings>(() =>
 			{
 				if (jsonSerializerSettings == null)
 				{
@@ -34,14 +34,14 @@
 		/// <inheritdoc/>
 		public async Task<HttpContent> SerializeAsync<T>(T item)
 		{
-			var content = new StringContent(JsonConvert.SerializeObject(item, this._jsonSerializerSettings.Value), Encoding.UTF8, "application/json");
+			var content = new StringContent(JsonConvert.SerializeObject(item, _jsonSerializerSettings.Value), Encoding.UTF8, "application/json");
 			return await Task.FromResult((HttpContent)content);
 		}
 
 		/// <inheritdoc/>
 		public async Task<T> DeserializeAsync<T>(HttpContent content)
 		{
-			var serializer = JsonSerializer.Create(this._jsonSerializerSettings.Value);
+			var serializer = JsonSerializer.Create(_jsonSerializerSettings.Value);
 
 			if (content == null) return default(T);
 
@@ -51,19 +51,19 @@
 				{
 					using (var decompressed = new GZipStream(stream, CompressionMode.Decompress))
 					{
-						return await this.ReadStreamToObject<T>(decompressed, serializer);
+						return await ReadStreamToObject<T>(decompressed, serializer);
 					}
 				}
 				else if (content.Headers.ContentEncoding.Any(x => x == "deflate"))
 				{
 					using (var decompressed = new DeflateStream(stream, CompressionMode.Decompress))
 					{
-						return await this.ReadStreamToObject<T>(decompressed, serializer);
+						return await ReadStreamToObject<T>(decompressed, serializer);
 					}
 				}
 				else
 				{
-					return await this.ReadStreamToObject<T>(stream, serializer);
+					return await ReadStreamToObject<T>(stream, serializer);
 				}
 			}
 		}

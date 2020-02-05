@@ -13,8 +13,8 @@ namespace Refit.Clients.Twitter.Models.QueryParams
 		[AliasAs("mode")]
 		public string Mode
 		{
-			get => this._mode.ToString().ToLower();
-			set => Enum.TryParse(value, out this._mode);
+			get => _mode.ToString().ToLower();
+			set => Enum.TryParse(value, out _mode);
 		}
 
 		[AliasAs("description")]

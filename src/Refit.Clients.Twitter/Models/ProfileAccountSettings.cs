@@ -28,15 +28,15 @@ namespace Refit.Clients.Twitter.Models
 		[AliasAs("include_entities")]
 		public string IncludeEntit1ies
 		{
-			get => (this._includeEntities ?? true).ToString(CultureInfo.DefaultThreadCurrentCulture).ToLower();
-			set => this._includeEntities = bool.Parse(value);
+			get => (_includeEntities ?? true).ToString(CultureInfo.DefaultThreadCurrentCulture).ToLower();
+			set => _includeEntities = bool.Parse(value);
 		}
 
 		[AliasAs("skip_status")]
 		public string SkipStatus
 		{
-			get => (this._skipStatus ?? true).ToString(CultureInfo.DefaultThreadCurrentCulture).ToLower();
-			set => this._skipStatus = bool.Parse(value);
+			get => (_skipStatus ?? true).ToString(CultureInfo.DefaultThreadCurrentCulture).ToLower();
+			set => _skipStatus = bool.Parse(value);
 		}
 
 		public static ProfileAccountSettings Default

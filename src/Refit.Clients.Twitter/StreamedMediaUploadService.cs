@@ -14,10 +14,10 @@
 
         internal StreamedMediaUploadService(string consumerKey, string consumerSecret, string accessToken, string accessTokenSecret)
         {
-            this._consumerKey = consumerKey;
-            this._consumerSecret = consumerSecret;
-            this._accessToken = accessToken;
-            this._accessTokenSecret = accessTokenSecret;
+            _consumerKey = consumerKey;
+            _consumerSecret = consumerSecret;
+            _accessToken = accessToken;
+            _accessTokenSecret = accessTokenSecret;
         }
 
         public async Task<ulong> Upload(byte[] content, string contentType)
