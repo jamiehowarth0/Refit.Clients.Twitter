@@ -1,14 +1,18 @@
-﻿namespace Refit.Clients
-{
-	using System;
-	using System.IO;
-	using System.IO.Compression;
-	using System.Linq;
-	using System.Net.Http;
-	using System.Text;
-	using System.Threading.Tasks;
-	using Newtonsoft.Json;
+﻿// <copyright file="CompressedJsonContentSerializer.cs" company="Benjamin Howarth &amp; contributors">
+// Copyright (c) Benjamin Howarth &amp; contributors. All rights reserved.
+// Licensed under the MIT license. See LICENSE file in the project root for full license information.
+// </copyright>
+using System;
+using System.IO;
+using System.IO.Compression;
+using System.Linq;
+using System.Net.Http;
+using System.Text;
+using System.Threading.Tasks;
+using Newtonsoft.Json;
 
+namespace Refit.Clients
+{
 	public class CompressedJsonContentSerializer : IContentSerializer
 	{
 		private readonly Lazy<JsonSerializerSettings> _jsonSerializerSettings;
@@ -45,20 +49,22 @@
 
 			if (content == null) return default(T);
 
-			using (var stream = await content.ReadAsStreamAsync())
+			using (var stream = await content.ReadAsStreamAsync().ConfigureAwait(false))
 			{
 				if (content.Headers.ContentEncoding.Any(x => x == "gzip"))
 				{
 					using (var decompressed = new GZipStream(stream, CompressionMode.Decompress))
 					{
-						return await ReadStreamToObject<T>(decompressed, serializer);
+						return await ReadStreamToObject<T>(decompressed, serializer)
+							.ConfigureAwait(false);
 					}
 				}
 				else if (content.Headers.ContentEncoding.Any(x => x == "deflate"))
 				{
 					using (var decompressed = new DeflateStream(stream, CompressionMode.Decompress))
 					{
-						return await ReadStreamToObject<T>(decompressed, serializer);
+						return await ReadStreamToObject<T>(decompressed, serializer)
+							.ConfigureAwait(false);
 					}
 				}
 				else

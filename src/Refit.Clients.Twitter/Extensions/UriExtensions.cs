@@ -1,12 +1,16 @@
-﻿namespace Refit.Clients.Twitter.Extensions
-{
-	using System;
-	using System.Collections.Generic;
-	using System.Globalization;
-	using System.Linq;
-	using System.Text;
-	using System.Text.RegularExpressions;
+﻿// <copyright file="UriExtensions.cs" company="Benjamin Howarth &amp; contributors">
+// Copyright (c) Benjamin Howarth &amp; contributors. All rights reserved.
+// Licensed under the MIT license. See LICENSE file in the project root for full license information.
+// </copyright>
+using System;
+using System.Collections.Generic;
+using System.Globalization;
+using System.Linq;
+using System.Text;
+using System.Text.RegularExpressions;
 
+namespace Refit.Clients.Twitter.Extensions
+{
 	public static class UriExtensions
 	{
 		public static string NormalizeUrl(this Uri url)
