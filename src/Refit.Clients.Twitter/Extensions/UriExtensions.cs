@@ -35,7 +35,7 @@ namespace Refit.Clients.Twitter.Extensions
 			value = Uri.EscapeDataString(value);
 
 			// UrlEncode escapes with lowercase characters (e.g. %2f) but oAuth needs %2F
-			value = Regex.Replace(value, "(%[0-9a-f][0-9a-f])", c => c.Value.ToUpper(CultureInfo.DefaultThreadCurrentCulture));
+			value = Regex.Replace(value, "(%([0-9a-f][a-f])|([a-f][0-9a-f]))", c => c.Value.ToUpper());
 
 			// these characters are not escaped by UrlEncode() but needed to be escaped
 			value = value

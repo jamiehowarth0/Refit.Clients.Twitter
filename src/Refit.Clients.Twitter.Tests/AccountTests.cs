@@ -26,32 +26,32 @@ namespace Refit.Clients.Twitter.Tests
 		[SetUp]
 		public void Setup()
 		{
-			this.consumerKey = Environment.GetEnvironmentVariable("Twitter-ConsumerKey");
-			this.consumerSecret = Environment.GetEnvironmentVariable("Twitter-ConsumerSecret");
-			this.accessToken = Environment.GetEnvironmentVariable("Twitter-AccessToken");
-			this.accessTokenSecret = Environment.GetEnvironmentVariable("Twitter-AccessTokenSecret");
-			this._client = TwitterClient.Create(this.consumerKey, this.consumerSecret, this.accessToken, this.accessTokenSecret);
-			this._account = this._client.Account;
+			consumerKey = Environment.GetEnvironmentVariable("Twitter-ConsumerKey");
+			consumerSecret = Environment.GetEnvironmentVariable("Twitter-ConsumerSecret");
+			accessToken = Environment.GetEnvironmentVariable("Twitter-AccessToken");
+			accessTokenSecret = Environment.GetEnvironmentVariable("Twitter-AccessTokenSecret");
+			_client = TwitterClient.Create(consumerKey, consumerSecret, accessToken, accessTokenSecret);
+			_account = _client.Account;
 		}
 
 		[Test]
 		public async Task Test_AccountSettings_Get()
 		{
-			var settings = await this._account.Settings().ConfigureAwait(false);
+			var settings = await _account.Settings().ConfigureAwait(false);
 			Assert.IsNotNull(settings);
 		}
 
 		[Test]
 		public async Task Test_VerifyCredentials_Get()
 		{
-			var verifyCredentials = await this._account.VerifyCredentials().ConfigureAwait(false);
+			var verifyCredentials = await _account.VerifyCredentials().ConfigureAwait(false);
 			Assert.IsNotNull(verifyCredentials);
 		}
 
 		[Test]
 		public async Task Test_ProfileBanner_Get()
 		{
-			var profileBanners = await this._account.ProfileBanner(new IDOrScreenNameQueryParams() { ScreenName = "benjaminhowarth" })
+			var profileBanners = await _account.ProfileBanner(new IDOrScreenNameQueryParams() { ScreenName = "Politiplay" })
 				.ConfigureAwait(false);
 			Assert.IsNotNull(profileBanners);
 		}
@@ -60,13 +60,13 @@ namespace Refit.Clients.Twitter.Tests
 		[Explicit("Non-GET REST method, should only be tested against a dummy account ideally")]
 		public async Task Test_ProfileBanner_Update()
 		{
-			var banners = await this._account.ProfileBanner(new IDOrScreenNameQueryParams() { ScreenName = "benjaminhowarth" })
+			var banners = await _account.ProfileBanner(new IDOrScreenNameQueryParams() { ScreenName = "Politiplay" })
 				.ConfigureAwait(false);
 			using (var client = new HttpClient())
 			{
 				var savedBannerBytes = await client.GetByteArrayAsync(banners.Sizes._1500x500.Url).ConfigureAwait(false);
 				var savedBannerBase64 = Convert.ToBase64String(savedBannerBytes);
-				Assert.DoesNotThrowAsync(async () => await this._account.UpdateProfileBanner(null, savedBannerBase64)
+				Assert.DoesNotThrowAsync(async () => await _account.UpdateProfileBanner(null, savedBannerBase64)
 					.ConfigureAwait(false));
 			}
 		}
@@ -75,12 +75,12 @@ namespace Refit.Clients.Twitter.Tests
 		[Explicit("Non-GET REST method, should only be tested against a dummy account ideally")]
 		public async Task Test_ProfileBanner_Remove()
 		{
-			var banners = await this._account.ProfileBanner(new IDOrScreenNameQueryParams() { ScreenName = "benjaminhowarth" })
+			var banners = await _account.ProfileBanner(new IDOrScreenNameQueryParams() { ScreenName = "Politiplay" })
 				.ConfigureAwait(false);
 			var savedBannerBytes = await (new HttpClient()).GetByteArrayAsync(banners.Sizes._1500x500.Url)
 				.ConfigureAwait(false);
 			var savedBanner = Convert.ToBase64String(savedBannerBytes);
-			Assert.DoesNotThrowAsync(async () => await this._account.RemoveProfileBanner());
+			Assert.DoesNotThrowAsync(async () => await _account.RemoveProfileBanner());
 		}
 
 		[Test]
@@ -95,9 +95,7 @@ namespace Refit.Clients.Twitter.Tests
 		[Explicit("Non-GET REST method, should only be tested against a dummy account ideally")]
 		public async Task Test_Profile_Update()
 		{
-			// https://twitter.com/search?q=from%3Abenjaminhowarth%20exclude%3Areplies
-			// Making the Internet better, faster, & cheaper for your audience, globally. @aspnet consultant & speaker, @ASPInsiders, @LibDems activist. IANAL (yet). He/him
-			var settings = new ProfileAccountSettings { Name = "BH Refit test" };
+			var settings = new ProfileAccountSettings { Name = "Politiplay Refit test" };
 			Assert.DoesNotThrowAsync(async () => await _account.UpdateProfile(settings));
 		}
 

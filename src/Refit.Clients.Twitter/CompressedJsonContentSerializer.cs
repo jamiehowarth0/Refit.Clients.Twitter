@@ -11,9 +11,9 @@ using System.Text;
 using System.Threading.Tasks;
 using Newtonsoft.Json;
 
-namespace Refit.Clients
+namespace Refit.Clients.Twitter
 {
-	public class CompressedJsonContentSerializer : IContentSerializer
+	internal class CompressedJsonContentSerializer : IContentSerializer
 	{
 		private readonly Lazy<JsonSerializerSettings> _jsonSerializerSettings;
 

@@ -24,19 +24,19 @@ namespace Refit.Clients.Twitter.Tests
 		[SetUp]
 		public void Setup()
 		{
-			this.consumerKey = Environment.GetEnvironmentVariable("Twitter-ConsumerKey");
-			this.consumerSecret = Environment.GetEnvironmentVariable("Twitter-ConsumerSecret");
-			this.accessToken = Environment.GetEnvironmentVariable("Twitter-AccessToken");
-			this.accessTokenSecret = Environment.GetEnvironmentVariable("Twitter-AccessTokenSecret");
-			this._client = TwitterClient.Create(this.consumerKey, this.consumerSecret, this.accessToken, this.accessTokenSecret);
-			this._statuses = this._client.Statuses;
+			consumerKey = Environment.GetEnvironmentVariable("Twitter-ConsumerKey");
+			consumerSecret = Environment.GetEnvironmentVariable("Twitter-ConsumerSecret");
+			accessToken = Environment.GetEnvironmentVariable("Twitter-AccessToken");
+			accessTokenSecret = Environment.GetEnvironmentVariable("Twitter-AccessTokenSecret");
+			_client = TwitterClient.Create(consumerKey, consumerSecret, accessToken, accessTokenSecret);
+			_statuses = _client.Statuses;
 		}
 
 		[Test]
 		public async Task Test_Statuses_Get()
 		{
 			ulong tweetId = 1101833311348031488;
-			var tweet = await this._statuses.Get(tweetId);
+			var tweet = await _statuses.Get(tweetId);
 			Assert.IsNotNull(tweet);
 		}
 
@@ -45,24 +45,25 @@ namespace Refit.Clients.Twitter.Tests
 		public async Task Test_Statuses_Post()
 		{
 			var newTweet = new TweetQueryParams() { Status = "Refit test post" };
-			Assert.DoesNotThrowAsync(async () => await this._statuses.Post(newTweet));
+			Assert.DoesNotThrowAsync(async () => await _statuses.Post(newTweet));
 		}
 
 		[Test]
 		[Explicit("Non-GET REST method, should only be tested against a dummy account ideally")]
 		public async Task Test_Statuses_PostWithMedia()
-		{
+        {
+            Assert.Fail();
 			ulong mediaId = 0;
 			using (var file = System.IO.File.OpenRead("test-image.png"))
 			{
 				var fileBytes = new byte[file.Length];
 				file.Read(fileBytes, 0, fileBytes.Length);
 				file.Close();
-				Assert.DoesNotThrowAsync(async () => { mediaId = await this._client.UploadService.Upload(fileBytes, "image/png"); });
+				Assert.DoesNotThrowAsync(async () => { mediaId = await _client.UploadService.Upload(fileBytes, "image/png"); });
 			}
 
 			var newTweet = new TweetQueryParams() { Status = "Refit media test", MediaIDs = mediaId.ToString(CultureInfo.DefaultThreadCurrentCulture) };
-			Assert.DoesNotThrowAsync(async () => await this._statuses.Post(newTweet));
+			Assert.DoesNotThrowAsync(async () => await _statuses.Post(newTweet));
 		}
 	}
 }

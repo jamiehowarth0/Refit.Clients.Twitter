@@ -29,14 +29,17 @@ namespace Refit.Clients.Twitter
 		[Post("/collections/destroy.json")]
 		Task Destroy([Query] object queryParams);
 
-		// GET collections/list
-		// GET collections/show
-		// POST collections/create
-		// POST collections/destroy
-		// POST collections/update
-		// POST collections/entries/add
-		// POST collections/entries/curate
-		// POST collections/entries/move
-		// POST collections/entries/remove
+		//[Post]
+		//Task AddEntry([Query] object queryParams);
+
+
+		//[Post]
+		//Task CurateEntries([Query] object queryParams);
+
+		//[Post]
+		//Task MoveEntry([Query] object queryParams);
+
+		//[Post]
+		//Task RemoveEntry([Query] object queryParams);
 	}
 }

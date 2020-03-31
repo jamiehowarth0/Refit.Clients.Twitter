@@ -9,9 +9,9 @@ using System.Net.Http.Headers;
 using System.Threading;
 using System.Threading.Tasks;
 
-namespace Refit.Clients
+namespace Refit.Clients.Twitter
 {
-	public class CompressionHeaderHandler : DelegatingHandler
+	internal class CompressionHeaderHandler : DelegatingHandler
 	{
 		public CompressionHeaderHandler(HttpMessageHandler innerHandler)
 			: base(innerHandler ?? new HttpClientHandler())

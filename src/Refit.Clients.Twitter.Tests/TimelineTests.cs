@@ -24,39 +24,39 @@ namespace Refit.Clients.Twitter.Tests
 		[SetUp]
 		public void Setup()
 		{
-			this.consumerKey = Environment.GetEnvironmentVariable("Twitter-ConsumerKey");
-			this.consumerSecret = Environment.GetEnvironmentVariable("Twitter-ConsumerSecret");
-			this.accessToken = Environment.GetEnvironmentVariable("Twitter-AccessToken");
-			this.accessTokenSecret = Environment.GetEnvironmentVariable("Twitter-AccessTokenSecret");
-			this._client = TwitterClient.Create(this.consumerKey, this.consumerSecret, this.accessToken, this.accessTokenSecret);
-			this._timelines = this._client.Timelines;
+			consumerKey = Environment.GetEnvironmentVariable("Twitter-ConsumerKey");
+			consumerSecret = Environment.GetEnvironmentVariable("Twitter-ConsumerSecret");
+			accessToken = Environment.GetEnvironmentVariable("Twitter-AccessToken");
+			accessTokenSecret = Environment.GetEnvironmentVariable("Twitter-AccessTokenSecret");
+			_client = TwitterClient.Create(consumerKey, consumerSecret, accessToken, accessTokenSecret);
+			_timelines = _client.Timelines;
 		}
 
 		[Test]
 		public async Task Test_Home_DefaultOptions()
 		{
-			var tweets = await this._timelines.Home(UserTimelineQueryParams.Default);
+			var tweets = await _timelines.Home(UserTimelineQueryParams.Default);
 			Assert.That(tweets.Any());
 		}
 
 		[Test]
 		public async Task Test_User_DefaultOptions()
 		{
-			var tweets = await this._timelines.User(UserTimelineQueryParams.Default);
+			var tweets = await _timelines.User(UserTimelineQueryParams.Default);
 			Assert.That(tweets.Any());
 		}
 
 		[Test]
 		public async Task Test_Mentions_DefaultOptions()
 		{
-			var tweets = await this._timelines.Mentions(UserTimelineQueryParams.Default);
+			var tweets = await _timelines.Mentions(UserTimelineQueryParams.Default);
 			Assert.That(tweets.Any());
 		}
 
 		[Test]
 		public async Task Test_Home_CustomOptions()
 		{
-			var tweets = await this._timelines.Home(new UserTimelineQueryParams() { IncludeEntities = false.ToString(), Page = "2" });
+			var tweets = await _timelines.Home(new UserTimelineQueryParams() { IncludeEntities = false.ToString(), Page = "2" });
 			Assert.IsNotNull(tweets);
 			Assert.That(tweets.Any());
 		}
@@ -64,7 +64,7 @@ namespace Refit.Clients.Twitter.Tests
 		[Test]
 		public async Task Test_User_CustomOptions()
 		{
-			var tweets = await this._timelines.User(new UserTimelineQueryParams() { IncludeEntities = false.ToString(), Page = "2" })
+			var tweets = await _timelines.User(new UserTimelineQueryParams() { IncludeEntities = false.ToString(), Page = "2" })
 				.ConfigureAwait(false);
 			Assert.IsNotNull(tweets);
 			Assert.That(tweets.Any());
@@ -73,7 +73,7 @@ namespace Refit.Clients.Twitter.Tests
 		[Test]
 		public async Task Test_Mentions_CustomOptions()
 		{
-			var tweets = await this._timelines.Mentions(new UserTimelineQueryParams() { IncludeEntities = false.ToString(), Page = "2" })
+			var tweets = await _timelines.Mentions(new UserTimelineQueryParams() { IncludeEntities = false.ToString(), Page = "2" })
 				.ConfigureAwait(false);
 			Assert.IsNotNull(tweets);
 			Assert.That(tweets.Any());
