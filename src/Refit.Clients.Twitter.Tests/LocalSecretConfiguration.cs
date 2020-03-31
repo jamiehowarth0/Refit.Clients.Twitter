@@ -16,10 +16,16 @@ namespace Refit.Clients.Twitter.Tests
 	{
 		[OneTimeSetUp]
 		public void LoadSecrets()
-		{
-			var config = new ConfigurationBuilder()
-				.AddJsonFile("appsettings.json")
-				.Build();
+        {
+            GetConfig();
+        }
+
+        internal static IConfiguration GetConfig()
+        {
+            var config = new ConfigurationBuilder()
+                .AddJsonFile("appsettings.json")
+                .Build();
+            return config;
         }
 	}
 }

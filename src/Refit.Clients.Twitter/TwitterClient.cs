@@ -33,7 +33,7 @@ namespace Refit.Clients.Twitter
 		{
 			ConsumerKey = consumerKey;
 			AccessToken = accessToken;
-			SigningKey = $"{consumerSecret.UrlEncode()}&{accessTokenSecret.UrlEncode()}";
+			SigningKey = $"{consumerSecret.UrlEncode()}{accessTokenSecret.UrlEncode()}";
 			_settings = new RefitSettings()
 			{
 				HttpMessageHandlerFactory = () => new OAuthHttpClientHandler(GetToken, null),
@@ -49,21 +49,21 @@ namespace Refit.Clients.Twitter
 			UploadService = new StreamedMediaUploadService(consumerKey, consumerSecret, accessToken, accessTokenSecret);
 		}
 
-		public IAccount Account { get => RestService.For<IAccount>(TwitterEndpoint, _settings); }
+		public IAccount Account => RestService.For<IAccount>(TwitterEndpoint, _settings);
 
-		public ICollections Collections { get => RestService.For<ICollections>(TwitterEndpoint, _settings); }
+		public ICollections Collections => RestService.For<ICollections>(TwitterEndpoint, _settings);
 
-		public IFriendships Friendships { get => RestService.For<IFriendships>(TwitterEndpoint, _settings); }
+		public IFriendships Friendships => RestService.For<IFriendships>(TwitterEndpoint, _settings);
 
-		public ILists Lists { get => RestService.For<ILists>(TwitterEndpoint, _settings); }
+		public ILists Lists => RestService.For<ILists>(TwitterEndpoint, _settings);
 
-		public IStatuses Statuses { get => RestService.For<IStatuses>(TwitterEndpoint, _settings); }
+		public IStatuses Statuses => RestService.For<IStatuses>(TwitterEndpoint, _settings);
 
-		public ITimelines Timelines { get => RestService.For<ITimelines>(TwitterEndpoint, _settings); }
+		public ITimelines Timelines => RestService.For<ITimelines>(TwitterEndpoint, _settings);
 
-		public ITrends Trends { get => RestService.For<ITrends>(TwitterEndpoint, _settings); }
+		public ITrends Trends => RestService.For<ITrends>(TwitterEndpoint, _settings);
 
-		public IUsers Users { get => RestService.For<IUsers>(TwitterEndpoint, _settings); }
+		public IUsers Users => RestService.For<IUsers>(TwitterEndpoint, _settings);
 
 		public StreamedMediaUploadService UploadService { get; set; }
 

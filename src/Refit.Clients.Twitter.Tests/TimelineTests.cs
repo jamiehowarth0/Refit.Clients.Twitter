@@ -24,10 +24,11 @@ namespace Refit.Clients.Twitter.Tests
 		[SetUp]
 		public void Setup()
 		{
-			consumerKey = Environment.GetEnvironmentVariable("Twitter-ConsumerKey");
-			consumerSecret = Environment.GetEnvironmentVariable("Twitter-ConsumerSecret");
-			accessToken = Environment.GetEnvironmentVariable("Twitter-AccessToken");
-			accessTokenSecret = Environment.GetEnvironmentVariable("Twitter-AccessTokenSecret");
+            var config = LocalSecretConfiguration.GetConfig();
+            consumerKey = config["Twitter-ConsumerKey"];
+            consumerSecret = config["Twitter-ConsumerSecret"];
+            accessToken = config["Twitter-AccessToken"];
+            accessTokenSecret = config["Twitter-AccessTokenSecret"];
 			_client = TwitterClient.Create(consumerKey, consumerSecret, accessToken, accessTokenSecret);
 			_timelines = _client.Timelines;
 		}

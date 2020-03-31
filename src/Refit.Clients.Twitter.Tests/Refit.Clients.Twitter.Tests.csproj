@@ -7,10 +7,13 @@
     <CopyLocalLockFileAssemblies>true</CopyLocalLockFileAssemblies>
     <CodeAnalysisRuleSet>..\tests.ruleset</CodeAnalysisRuleSet>
     <RootNamespace>Refit.Clients.Twitter.Tests</RootNamespace>
+    <SignAssembly>false</SignAssembly>
   </PropertyGroup>
 
   <ItemGroup>
-    <Content Include="appsettings.json" />
+    <Content Include="appsettings.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
   </ItemGroup>
 
   <ItemGroup>
