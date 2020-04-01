@@ -17,15 +17,21 @@ namespace Refit.Clients.Twitter.Tests
 		[OneTimeSetUp]
 		public void LoadSecrets()
         {
-            GetConfig();
+            var currentDirectory = Path.GetDirectoryName(GetType().Assembly.Location);
+            if (File.Exists(Path.Combine(currentDirectory, "appsettings.json")))
+            {
+                var config = new ConfigurationBuilder()
+                    .AddJsonFile("appsettings.json")
+                    .Build();
+                Environment.SetEnvironmentVariable(Constants.ConsumerKey, config[Constants.ConsumerKey], EnvironmentVariableTarget.Process);
+                Environment.SetEnvironmentVariable(Constants.ConsumerSecret, config[Constants.ConsumerSecret], EnvironmentVariableTarget.Process);
+                Environment.SetEnvironmentVariable(Constants.AccessToken, config[Constants.AccessToken], EnvironmentVariableTarget.Process);
+                Environment.SetEnvironmentVariable(Constants.AccessTokenSecret, config[Constants.AccessTokenSecret], EnvironmentVariableTarget.Process);
+            }
+            else
+            {
+                // BH: Do nothing, access tokens set by Azure Key Vault at build time
+            }
         }
-
-        internal static IConfiguration GetConfig()
-        {
-            var config = new ConfigurationBuilder()
-                .AddJsonFile("appsettings.json")
-                .Build();
-            return config;
-        }
-	}
+    }
 }

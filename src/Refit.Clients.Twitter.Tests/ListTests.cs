@@ -26,11 +26,10 @@ namespace Refit.Clients.Twitter.Tests
 		[SetUp]
 		public void Setup()
 		{
-            var config = LocalSecretConfiguration.GetConfig();
-            consumerKey = config["Twitter-ConsumerKey"];
-            consumerSecret = config["Twitter-ConsumerSecret"];
-            accessToken = config["Twitter-AccessToken"];
-            accessTokenSecret = config["Twitter-AccessTokenSecret"];
+            consumerKey = Environment.GetEnvironmentVariable(Constants.ConsumerKey);
+            consumerSecret = Environment.GetEnvironmentVariable(Constants.ConsumerSecret);
+            accessToken = Environment.GetEnvironmentVariable(Constants.AccessToken);
+            accessTokenSecret = Environment.GetEnvironmentVariable(Constants.AccessTokenSecret);
 			listName = "Refit test list";
 			listDescription = "Refit test list description";
 			_client = TwitterClient.Create(consumerKey, consumerSecret, accessToken, accessTokenSecret);
@@ -40,7 +39,7 @@ namespace Refit.Clients.Twitter.Tests
 		[Test]
 		public async Task Test_Lists_Get()
 		{
-			var lists = await _lists.GetLists(new IDOrScreenNameQueryParams() { ScreenName = "benjaminhowarth" });
+			var lists = await _lists.GetLists(new IDOrScreenNameQueryParams() { ScreenName = "Politiplay" });
 			Assert.IsNotNull(lists);
 			Assert.AreEqual(12, lists.Count());
 		}

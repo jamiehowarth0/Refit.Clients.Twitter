@@ -346,4 +346,7 @@ MigrationBackup/
 # dotnet tool local install directory
 .store/
 
+# NDepend
+**/NDependOut
+
 LocalSecretConfiguration.cs

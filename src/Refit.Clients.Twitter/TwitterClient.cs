@@ -16,7 +16,7 @@ namespace Refit.Clients.Twitter
 {
 	public class TwitterClient
 	{
-		internal static string NowAsString = Convert.ToInt64(DateTime.UtcNow.Subtract(UnixEpoch).TotalSeconds, CultureInfo.InvariantCulture).ToString(CultureInfo.InvariantCulture);
+		internal static string NowAsString = DateTimeOffset.UtcNow.ToUnixTimeSeconds().ToString(CultureInfo.InvariantCulture);
 
 		private readonly RefitSettings _settings;
 
@@ -25,7 +25,6 @@ namespace Refit.Clients.Twitter
 		// private readonly Dictionary<string, string> RequestParameters;
 		private readonly string SigningKey;
 
-		public static readonly DateTime UnixEpoch = new DateTime(1970, 1, 1, 0, 0, 0, DateTimeKind.Utc);
 		public static readonly string TwitterTimeFormat = "ddd MMM dd HH:mm:ss zzzz yyyy";
 		public static readonly string TwitterEndpoint = "https://api.twitter.com/1.1";
 
@@ -33,7 +32,7 @@ namespace Refit.Clients.Twitter
 		{
 			ConsumerKey = consumerKey;
 			AccessToken = accessToken;
-			SigningKey = $"{consumerSecret.UrlEncode()}{accessTokenSecret.UrlEncode()}";
+			SigningKey = $"{consumerSecret.UrlEncode()}&{accessTokenSecret.UrlEncode()}";
 			_settings = new RefitSettings()
 			{
 				HttpMessageHandlerFactory = () => new OAuthHttpClientHandler(GetToken, null),
