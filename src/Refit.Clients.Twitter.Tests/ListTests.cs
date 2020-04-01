@@ -88,7 +88,7 @@ namespace Refit.Clients.Twitter.Tests
 			var memberships = await _lists.GetOwnerships(new ListMembershipQueryParams() { ScreenName = "benjaminhowarth" });
 			Assert.IsNotNull(memberships);
 			Assert.IsNotEmpty(memberships.Lists);
-            Assert.AreEqual(10, memberships.Lists.Count());
+            Assert.AreEqual(7, memberships.Lists.Count());
 		}
 
 		[Test]
@@ -142,7 +142,7 @@ namespace Refit.Clients.Twitter.Tests
 		[Order(2)]
 		public async Task Test_List_Update()
 		{
-			var list = (await _lists.GetLists(new IDOrScreenNameQueryParams() { ScreenName = "benjaminhowarth" }))
+			var list = (await _lists.GetLists(new IDOrScreenNameQueryParams() { ScreenName = "Politiplay" }))
 				.FirstOrDefault(n => n.Name == listName);
 			var updatedList = await _lists.UpdateList(new UpdateListQueryParams() { Description = listDescription, ID = list.ID });
 			Assert.IsNotNull(updatedList);
@@ -164,25 +164,35 @@ namespace Refit.Clients.Twitter.Tests
 		[Test]
 		public async Task Test_ListMember_Create()
 		{
-			Assert.Fail();
-		}
+            var list = (await _lists.GetLists(new IDOrScreenNameQueryParams() { ScreenName = "Politiplay" }))
+                .FirstOrDefault(n => n.Name == listName);
+            Assert.DoesNotThrowAsync(async () => await _lists.CreateListMember(new ListMemberCRUDQueryParams() {ListID = list.ID, ScreenName = "benjaminhowarth"}));
+        }
 
 		[Test]
 		public async Task Test_ListMember_CreateAll()
 		{
-			Assert.Fail();
+            var list = (await _lists.GetLists(new IDOrScreenNameQueryParams() { ScreenName = "Politiplay" }))
+                .FirstOrDefault(n => n.Name == listName);
+            var screennamesToAdd = new[] {"codewidow", "RedactCC"};
+            Assert.DoesNotThrowAsync(async () => await _lists.CreateAllListMembers(new ListMemberCRUDAllQueryParams() { ListID = list.ID, ScreenName = screennamesToAdd }));
 		}
 
 		[Test]
 		public async Task Test_ListMember_Delete()
 		{
-			Assert.Fail();
+            var list = (await _lists.GetLists(new IDOrScreenNameQueryParams() { ScreenName = "Politiplay" }))
+                .FirstOrDefault(n => n.Name == listName);
+            Assert.DoesNotThrowAsync(async () => await _lists.DeleteListMember(new ListMemberCRUDQueryParams() { ListID = list.ID, ScreenName = "codewidow" }));
 		}
 
 		[Test]
 		public async Task Test_ListMember_DeleteAll()
 		{
-			Assert.Fail();
+            var list = (await _lists.GetLists(new IDOrScreenNameQueryParams() { ScreenName = "Politiplay" }))
+                .FirstOrDefault(n => n.Name == listName);
+            var namesToDelete = new[] {"RedactCC"};
+            Assert.DoesNotThrowAsync(async () => await _lists.DeleteAllListMembers(new ListMemberCRUDAllQueryParams() { ListID = list.ID, ScreenName = namesToDelete }));
 		}
 
 		[Test]

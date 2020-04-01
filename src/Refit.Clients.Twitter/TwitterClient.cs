@@ -40,7 +40,7 @@ namespace Refit.Clients.Twitter
 				// AuthorizationHeaderValueGetter = () => { return Task.FromResult(GetToken()); },
 				ContentSerializer = new CompressedJsonContentSerializer(new JsonSerializerSettings()
 				{
-					DateFormatString = TwitterTimeFormat,
+                    DateFormatString = TwitterTimeFormat,
 					ContractResolver = new DefaultContractResolver() { NamingStrategy = new SnakeCaseNamingStrategy() },
 				}),
 			};

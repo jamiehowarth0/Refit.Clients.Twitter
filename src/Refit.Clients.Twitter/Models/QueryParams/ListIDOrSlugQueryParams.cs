@@ -28,7 +28,7 @@ namespace Refit.Clients.Twitter.Models.QueryParams
 				sb.Append("slug=");
 				sb.Append(Slug);
 				if (string.IsNullOrEmpty(OwnerScreenName) && string.IsNullOrEmpty(OwnerID))
-					throw new InvalidOperationException();
+					throw new ArgumentNullException();
 				if (!string.IsNullOrEmpty(OwnerID))
 				{
 					sb.AppendFormat("&owner_id={0}", OwnerID);

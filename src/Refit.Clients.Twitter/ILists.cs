@@ -54,16 +54,16 @@ namespace Refit.Clients.Twitter
 		Task<UserList> DeleteList([Query]ListIDOrSlugQueryParams destroyParams);
 
 		[Post("/lists/members/create.json")]
-		Task CreateListMember();
+		Task<UserList> CreateListMember([Query]ListMemberCRUDQueryParams createMemberParams);
 
 		[Post("/lists/members/create_all.json")]
-		Task CreateAllListMembers();
+		Task<UserList> CreateAllListMembers([Query]ListMemberCRUDAllQueryParams createMembersParams);
 
 		[Post("/lists/members/destroy.json")]
-		Task DeleteListMember();
+		Task<UserList> DeleteListMember([Query]ListMemberCRUDQueryParams deleteMemberParams);
 
 		[Post("/lists/members/destroy_all.json")]
-		Task DeleteAllListMembers();
+		Task DeleteAllListMembers([Query]ListMemberCRUDAllQueryParams createMembersParams);
 
 		[Post("/lists/subscribers/create.json")]
 		Task CreateListSubscriber();
