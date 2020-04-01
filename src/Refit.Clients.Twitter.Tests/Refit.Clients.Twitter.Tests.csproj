@@ -11,12 +11,6 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Content Include="appsettings.json">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-  </ItemGroup>
-
-  <ItemGroup>
     <ProjectReference Include="..\Refit.Clients.Twitter\Refit.Clients.Twitter.csproj" />
   </ItemGroup>
 
