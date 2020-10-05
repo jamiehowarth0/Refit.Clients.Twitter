@@ -350,3 +350,4 @@ MigrationBackup/
 **/NDependOut
 
 LocalSecretConfiguration.cs
+/src/Refit.Clients.Twitter.Tests/appsettings.json

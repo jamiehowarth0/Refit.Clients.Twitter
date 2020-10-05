@@ -13,12 +13,12 @@ namespace Refit.Clients.Twitter
 {
 	internal class OAuthHttpClientHandler : DelegatingHandler
 	{
-		private readonly Func<HttpRequestMessage, Task<string>> getToken;
+		private readonly Func<HttpRequestMessage, Task<string>> _getToken;
 
 		public OAuthHttpClientHandler(Func<HttpRequestMessage, Task<string>> getToken, HttpMessageHandler innerHandler)
 			: base(innerHandler ?? new HttpClientHandler())
 		{
-			this.getToken = getToken ?? throw new ArgumentNullException(nameof(getToken));
+			_getToken = getToken ?? throw new ArgumentNullException(nameof(getToken));
 		}
 
 		/// <inheritdoc/>
@@ -30,7 +30,7 @@ namespace Refit.Clients.Twitter
 			var auth = request.Headers.Authorization;
 			if (auth != null)
 			{
-				var token = await getToken(request).ConfigureAwait(false);
+				var token = await _getToken(request).ConfigureAwait(false);
 				var header = new AuthenticationHeaderValue(auth.Scheme, token);
 				request.Headers.Authorization = header;
 

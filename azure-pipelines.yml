@@ -2,6 +2,8 @@ trigger:
   branches:
     include:
     - master
+    - develop
+    - 'feature/*'
     - 'validate/*'
   paths:
     exclude:

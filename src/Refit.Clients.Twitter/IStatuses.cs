@@ -26,10 +26,23 @@ namespace Refit.Clients.Twitter
 		[Get("/statuses/lookup.json")]
 		Task<IEnumerable<Tweet>> Lookup([Query]LookupQueryParams searchParams);
 
-		//POST statuses/update
-		//POST statuses/destroy/:id
-		//GET statuses/show/:id
-		//GET statuses/oembed
+		[Post("/statuses/retweet/{id}.json")]
+		Task<Tweet> Retweet(ulong id);
+
+		[Post("/statuses/unretweet/{id}.json")]
+		Task<Tweet> Unretweet(ulong id);
+
+		[Get("/statuses/retweets/{id}.json")]
+		Task<IEnumerable<Tweet>> Retweets([AliasAs("id")]ulong tweetId);
+
+		[Get("/statuses/retweets_of_me.json")]
+		Task<IEnumerable<Tweet>> RetweetsOfMe();
+
+		[Get("/statuses/retweeters/ids.json")]
+		Task<IEnumerable<Tweet>> Retweeters();
+
+		//[Get("/statuses/oembed.json")]
+		//Task<Tweet> OEmbed();
 
 		//GET statuses/lookup
 		//POST statuses/retweet/:id
@@ -37,5 +50,6 @@ namespace Refit.Clients.Twitter
 		//GET statuses/retweets/:id
 		//GET statuses/retweets_of_me
 		//GET statuses/retweeters/ids
+		
 	}
 }
